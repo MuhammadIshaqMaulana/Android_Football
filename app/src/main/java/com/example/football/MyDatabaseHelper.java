@@ -34,17 +34,18 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
                 FIELD_NAMA + " VARCHAR(50)," +
                 FIELD_NOMOR + " INTEGER(2)," +
                 FIELD_KLUB + " VARCHAR(50)" +
-                ");"
+                ")"
                 ;
         db.execSQL(query);
     }
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int
             newVersion) {
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
+        String query = "DROP TABLE IF EXISTS " + TABLE_NAME;
+        db.execSQL(query);
         onCreate(db);
     }
-    public long tambahPlayer(String nama, int nomor, String klub)
+    public long tambahPlayer(String nama, String nomor, String klub)
     {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
@@ -80,5 +81,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         long eksekusi = db.update(TABLE_NAME, cv, "id = ?", new
                 String[]{id});
         return eksekusi;
+
+
     }
 }
