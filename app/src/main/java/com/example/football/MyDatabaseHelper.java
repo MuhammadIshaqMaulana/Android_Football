@@ -81,7 +81,5 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         long eksekusi = db.update(TABLE_NAME, cv, "id = ?", new
                 String[]{id});
         return eksekusi;
-
-
     }
 }
