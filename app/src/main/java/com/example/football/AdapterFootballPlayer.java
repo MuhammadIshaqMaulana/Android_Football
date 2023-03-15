@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -73,7 +74,16 @@ public class AdapterFootballPlayer extends RecyclerView.Adapter<AdapterFootballP
                     pesan.setNegativeButton("Hapus", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-
+                            MyDatabaseHelper myDB = new MyDatabaseHelper(ctx);
+                            long eksekusi = myDB.hapusPlayer(tvID.getText().toString());
+                            if (eksekusi == -1) {
+                                Toast.makeText(ctx, "Gagal menghapus Data!", Toast.LENGTH_SHORT).show();
+                            }
+                            else {
+                                Toast.makeText(ctx, "Sukses Menghapus Data!", Toast.LENGTH_SHORT).show();
+                                dialog.dismiss();
+                                ((MainActivity) ctx).onResume();
+                            }
                         }
                     });
 
