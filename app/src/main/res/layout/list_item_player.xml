@@ -14,6 +14,15 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:id="@+id/tv_id"
+            android:text="ID"
+            android:textSize="21sp"
+            android:visibility="gone"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:id="@+id/tv_nama"
             android:text="Nama Pemain"
             android:textSize="21sp"
