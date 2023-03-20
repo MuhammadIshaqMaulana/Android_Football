@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class TambahActivity extends AppCompatActivity {
     private EditText etNama, etNomor, etKlub;
@@ -43,7 +44,13 @@ public class TambahActivity extends AppCompatActivity {
                 else {
                     long eks = myDB.tambahPlayer(nama, nomor, klub);
                     if(eks == -1){
-
+                        Toast.makeText(TambahActivity.this, "Gagal Menambah Data Player", Toast.LENGTH_SHORT).show();
+                                etNama.requestFocus();
+                    }
+                    else {
+                        Toast.makeText(TambahActivity.this,
+                                "Sukses Menambah Data Player", Toast.LENGTH_SHORT).show();
+                        finish();
                     }
                 }
             }
